@@ -1,3 +1,6 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+```
 // ===============================
 // CONTROLE DE FONTE
 // ===============================
@@ -8,36 +11,30 @@ const btnAumentar = document.getElementById("aumentarFonte");
 const btnDiminuir = document.getElementById("diminuirFonte");
 const btnReset = document.getElementById("resetFonte");
 
-btnAumentar.addEventListener("click", () => {
-
-```
-if (tamanhoFonte < 150) {
-    tamanhoFonte += 10;
-    document.body.style.fontSize = tamanhoFonte + "%";
+if (btnAumentar) {
+    btnAumentar.addEventListener("click", () => {
+        if (tamanhoFonte < 150) {
+            tamanhoFonte += 10;
+            document.body.style.fontSize = tamanhoFonte + "%";
+        }
+    });
 }
-```
 
-});
-
-btnDiminuir.addEventListener("click", () => {
-
-```
-if (tamanhoFonte > 70) {
-    tamanhoFonte -= 10;
-    document.body.style.fontSize = tamanhoFonte + "%";
+if (btnDiminuir) {
+    btnDiminuir.addEventListener("click", () => {
+        if (tamanhoFonte > 70) {
+            tamanhoFonte -= 10;
+            document.body.style.fontSize = tamanhoFonte + "%";
+        }
+    });
 }
-```
 
-});
-
-btnReset.addEventListener("click", () => {
-
-```
-tamanhoFonte = 100;
-document.body.style.fontSize = "100%";
-```
-
-});
+if (btnReset) {
+    btnReset.addEventListener("click", () => {
+        tamanhoFonte = 100;
+        document.body.style.fontSize = "100%";
+    });
+}
 
 // ===============================
 // LEITOR DE TELA
@@ -46,52 +43,51 @@ document.body.style.fontSize = "100%";
 const btnLerPagina = document.getElementById("lerPagina");
 const btnPararLeitura = document.getElementById("pararLeitura");
 
-btnLerPagina.addEventListener("click", () => {
+if (btnLerPagina) {
+    btnLerPagina.addEventListener("click", () => {
 
-```
-speechSynthesis.cancel();
+        speechSynthesis.cancel();
 
-const textoPagina = document.body.innerText;
+        const textoPagina = document.body.innerText;
 
-const leitura = new SpeechSynthesisUtterance(textoPagina);
+        const leitura = new SpeechSynthesisUtterance(textoPagina);
 
-leitura.lang = "pt-BR";
-leitura.rate = 1;
-leitura.pitch = 1;
-leitura.volume = 1;
+        leitura.lang = "pt-BR";
+        leitura.rate = 1;
+        leitura.pitch = 1;
+        leitura.volume = 1;
 
-speechSynthesis.speak(leitura);
-```
+        speechSynthesis.speak(leitura);
+    });
+}
 
-});
-
-btnPararLeitura.addEventListener("click", () => {
-
-```
-speechSynthesis.cancel();
-```
-
-});
+if (btnPararLeitura) {
+    btnPararLeitura.addEventListener("click", () => {
+        speechSynthesis.cancel();
+    });
+}
 
 // ===============================
-// BOTÃO COMEÇAR
+// BOTÃO COMEÇAR AGORA
 // ===============================
 
 const btnComecar = document.getElementById("btnComecar");
 
 if (btnComecar) {
 
-```
-btnComecar.addEventListener("click", () => {
+    btnComecar.addEventListener("click", () => {
 
-    document
-        .getElementById("pesquisa")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+        const secaoPesquisa = document.getElementById("pesquisa");
 
-});
-```
+        if (secaoPesquisa) {
+
+            secaoPesquisa.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
 
 }
 
@@ -100,21 +96,30 @@ btnComecar.addEventListener("click", () => {
 // ===============================
 
 const btnPesquisar = document.getElementById("btnPesquisar");
+const campoPesquisa = document.getElementById("campoPesquisa");
 
-if (btnPesquisar) {
+if (btnPesquisar && campoPesquisa) {
 
-```
-btnPesquisar.addEventListener("click", () => {
+    btnPesquisar.addEventListener("click", pesquisar);
 
-    const pesquisa =
-        document
-        .getElementById("campoPesquisa")
-        .value
-        .trim();
+    campoPesquisa.addEventListener("keypress", (event) => {
+
+        if (event.key === "Enter") {
+            pesquisar();
+        }
+
+    });
+
+}
+
+function pesquisar() {
+
+    const pesquisa = campoPesquisa.value.trim();
 
     if (pesquisa === "") {
 
         alert("Digite um assunto para pesquisar.");
+
         return;
 
     }
@@ -122,10 +127,38 @@ btnPesquisar.addEventListener("click", () => {
     alert(
         "Você pesquisou: " +
         pesquisa +
-        "\\n\\nA função de pesquisa será integrada às páginas de conteúdo."
+        "\n\nA função de busca completa será integrada nas próximas versões do AgroStart."
     );
 
+}
+
+// ===============================
+// CLIQUE NOS CARDS
+// ===============================
+
+const cards = document.querySelectorAll(".guide-card");
+
+cards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const titulo = card.querySelector("h3").innerText;
+
+        alert(
+            "Você selecionou:\n\n" +
+            titulo +
+            "\n\nEsta página será implementada em breve."
+        );
+
+    });
+
 });
+
+// ===============================
+// MENSAGEM DE INICIALIZAÇÃO
+// ===============================
+
+console.log("AgroStart carregado com sucesso!");
 ```
 
-}
+});
