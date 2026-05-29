@@ -1,0 +1,30 @@
+/* Todo o estilo ficará aqui */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    padding: 20px;
+}
+
+.hero {
+    padding: 80px 20px;
+}
+
+.search-section {
+    padding: 60px 20px;
+}
+
+.guides-section {
+    padding: 60px 20px;
+}
+
+.about-section {
+    padding: 60px 20px;
+}
+
+.footer {
+    padding: 20px;
+}
