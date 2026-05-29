@@ -28,32 +28,23 @@
         <ul>
             <li><a href="#inicio">Início</a></li>
             <li><a href="#pesquisa">Pesquisa</a></li>
-            <li><a href="#guias">Guias Rápidos</a></li>
+            <li><a href="#guias">Guias</a></li>
+            <li><a href="#conteudo-json">Conteúdo</a></li>
             <li><a href="#sobre">Sobre</a></li>
         </ul>
     </nav>
 
     <div class="acessibilidade">
 
-        <button id="aumentarFonte" title="Aumentar fonte">
-            A+
-        </button>
+        <button id="aumentarFonte">A+</button>
 
-        <button id="diminuirFonte" title="Diminuir fonte">
-            A-
-        </button>
+        <button id="diminuirFonte">A-</button>
 
-        <button id="resetFonte" title="Fonte padrão">
-            A
-        </button>
+        <button id="resetFonte">A</button>
 
-        <button id="lerPagina" title="Ler página">
-            🔊
-        </button>
+        <button id="lerPagina">🔊</button>
 
-        <button id="pararLeitura" title="Parar leitura">
-            ⏹
-        </button>
+        <button id="pararLeitura">⏹</button>
 
     </div>
 
@@ -61,7 +52,7 @@
 
 <main>
 
-    <!-- APRESENTAÇÃO -->
+    <!-- HERO -->
     <section id="inicio" class="hero">
 
         <div class="hero-content">
@@ -71,14 +62,13 @@
             </h2>
 
             <p>
-                O AgroStart é uma plataforma educativa desenvolvida para
-                trabalhadores rurais iniciantes. Aqui você encontrará
-                informações práticas sobre preparo do solo, irrigação,
-                sustentabilidade e técnicas agrícolas.
+                O AgroStart é uma plataforma educativa criada para ajudar
+                trabalhadores rurais iniciantes a aprender técnicas de plantio,
+                irrigação, sustentabilidade e boas práticas agrícolas.
             </p>
 
             <button id="btnComecar">
-                Começar Agora
+                Explorar Conteúdos
             </button>
 
         </div>
@@ -89,12 +79,11 @@
     <section id="pesquisa" class="search-section">
 
         <h2>
-            Pesquise qualquer assunto agrícola
+            Pesquise um assunto agrícola
         </h2>
 
         <p>
-            Encontre rapidamente informações sobre cultivo,
-            irrigação, solo, sementes e muito mais.
+            Em breve você poderá pesquisar conteúdos específicos.
         </p>
 
         <div class="search-container">
@@ -102,7 +91,7 @@
             <input
                 type="text"
                 id="campoPesquisa"
-                placeholder="Ex.: irrigação, sementes, preparo do solo..."
+                placeholder="Digite um assunto..."
             >
 
             <button id="btnPesquisar">
@@ -113,58 +102,51 @@
 
     </section>
 
-    <!-- GUIAS RÁPIDOS -->
+    <!-- GUIAS -->
     <section id="guias" class="guides-section">
 
         <h2>Guias Rápidos</h2>
 
         <p>
-            Acesse rapidamente os principais conteúdos da plataforma.
+            Clique em um tema para visualizar o conteúdo completo.
         </p>
 
         <div class="guides-grid">
 
-            <article class="guide-card">
-                <h3>🌱 Preparação do Solo</h3>
-                <p>
-                    Aprenda como preparar corretamente o terreno para o plantio.
-                </p>
-            </article>
+            <button class="guide-card" id="btnPraticas">
 
-            <article class="guide-card">
-                <h3>💧 Irrigação</h3>
-                <p>
-                    Conheça métodos eficientes de irrigação para economizar água.
-                </p>
-            </article>
+                <h3>🌱 Boas Práticas Agrícolas</h3>
 
-            <article class="guide-card">
-                <h3>🌾 Tipos de Cultivo</h3>
                 <p>
-                    Descubra diferentes formas de cultivo agrícola.
+                    Sustentabilidade e oportunidades na agricultura.
                 </p>
-            </article>
 
-            <article class="guide-card">
-                <h3>🐛 Controle de Pragas</h3>
-                <p>
-                    Saiba como proteger sua produção de maneira segura.
-                </p>
-            </article>
+            </button>
 
-            <article class="guide-card">
-                <h3>♻️ Sustentabilidade</h3>
-                <p>
-                    Aprenda práticas agrícolas sustentáveis.
-                </p>
-            </article>
+            <button class="guide-card" id="btnIrrigacao">
 
-            <article class="guide-card">
-                <h3>☀️ Épocas de Plantio</h3>
+                <h3>💧 Irrigação Sustentável</h3>
+
                 <p>
-                    Descubra os melhores períodos para cada cultura.
+                    Uso eficiente da água e tecnologias agrícolas.
                 </p>
-            </article>
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- CONTEÚDO DINÂMICO -->
+    <section id="conteudo-json" class="content-section">
+
+        <h2>Conteúdo Selecionado</h2>
+
+        <div id="conteudo">
+
+            <p>
+                Selecione um dos guias acima para visualizar as informações.
+            </p>
 
         </div>
 
@@ -174,22 +156,28 @@
     <section id="sobre" class="about-section">
 
         <div class="about-image">
-            <!-- Imagem futura -->
+
         </div>
 
         <div class="about-content">
 
-            <h2>Sobre o Projeto</h2>
+            <h2>
+                Sobre o Projeto
+            </h2>
 
             <p>
-                O AgroStart foi criado para facilitar o acesso ao conhecimento
-                agrícola para trabalhadores que estão iniciando suas atividades
-                no campo.
+                O AgroStart foi desenvolvido para auxiliar trabalhadores
+                do campo que estão iniciando suas atividades agrícolas.
             </p>
 
             <p>
-                Nossa missão é democratizar o aprendizado agrícola por meio
-                da tecnologia, oferecendo conteúdos acessíveis e organizados.
+                A plataforma reúne conteúdos confiáveis, organizados
+                e acessíveis para facilitar o aprendizado.
+            </p>
+
+            <p>
+                Este projeto foi criado para o Concurso Agrinho,
+                incentivando o uso da tecnologia no campo.
             </p>
 
         </div>
@@ -201,7 +189,9 @@
 <!-- RODAPÉ -->
 <footer class="footer">
 
-    <p>AgroStart © 2026</p>
+    <p>
+        AgroStart © 2026
+    </p>
 
     <p>
         Projeto desenvolvido para o Concurso Agrinho.
