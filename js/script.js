@@ -1,164 +1,170 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 ```
-// ===============================
-// CONTROLE DE FONTE
-// ===============================
+// ==================================
+// CARREGAR JSONS
+// ==================================
 
-let tamanhoFonte = 100;
+carregarConteudos();
 
-const btnAumentar = document.getElementById("aumentarFonte");
-const btnDiminuir = document.getElementById("diminuirFonte");
-const btnReset = document.getElementById("resetFonte");
+async function carregarConteudos() {
 
-if (btnAumentar) {
-    btnAumentar.addEventListener("click", () => {
-        if (tamanhoFonte < 150) {
-            tamanhoFonte += 10;
-            document.body.style.fontSize = tamanhoFonte + "%";
-        }
-    });
-}
+    try {
 
-if (btnDiminuir) {
-    btnDiminuir.addEventListener("click", () => {
-        if (tamanhoFonte > 70) {
-            tamanhoFonte -= 10;
-            document.body.style.fontSize = tamanhoFonte + "%";
-        }
-    });
-}
+        const arquivos = [
+            "bd/praticas.json",
+            "bd/irrigacao.json"
+        ];
 
-if (btnReset) {
-    btnReset.addEventListener("click", () => {
-        tamanhoFonte = 100;
-        document.body.style.fontSize = "100%";
-    });
-}
+        const container = document.getElementById("conteudo");
 
-// ===============================
-// LEITOR DE TELA
-// ===============================
+        if (!container) return;
 
-const btnLerPagina = document.getElementById("lerPagina");
-const btnPararLeitura = document.getElementById("pararLeitura");
+        container.innerHTML = "<p>Carregando conteúdos...</p>";
 
-if (btnLerPagina) {
-    btnLerPagina.addEventListener("click", () => {
+        let html = "";
 
-        speechSynthesis.cancel();
+        for (const arquivo of arquivos) {
 
-        const textoPagina = document.body.innerText;
+            const resposta = await fetch(arquivo);
 
-        const leitura = new SpeechSynthesisUtterance(textoPagina);
+            if (!resposta.ok) {
+                throw new Error(`Erro ao carregar ${arquivo}`);
+            }
 
-        leitura.lang = "pt-BR";
-        leitura.rate = 1;
-        leitura.pitch = 1;
-        leitura.volume = 1;
+            const dados = await resposta.json();
 
-        speechSynthesis.speak(leitura);
-    });
-}
-
-if (btnPararLeitura) {
-    btnPararLeitura.addEventListener("click", () => {
-        speechSynthesis.cancel();
-    });
-}
-
-// ===============================
-// BOTÃO COMEÇAR AGORA
-// ===============================
-
-const btnComecar = document.getElementById("btnComecar");
-
-if (btnComecar) {
-
-    btnComecar.addEventListener("click", () => {
-
-        const secaoPesquisa = document.getElementById("pesquisa");
-
-        if (secaoPesquisa) {
-
-            secaoPesquisa.scrollIntoView({
-                behavior: "smooth"
-            });
+            html += criarCardConteudo(dados);
 
         }
 
-    });
+        container.innerHTML = html;
 
-}
+    } catch (erro) {
 
-// ===============================
-// PESQUISA
-// ===============================
+        console.error(erro);
 
-const btnPesquisar = document.getElementById("btnPesquisar");
-const campoPesquisa = document.getElementById("campoPesquisa");
+        const container = document.getElementById("conteudo");
 
-if (btnPesquisar && campoPesquisa) {
+        if (container) {
 
-    btnPesquisar.addEventListener("click", pesquisar);
+            container.innerHTML = `
+                <p>
+                    Não foi possível carregar os conteúdos.
+                </p>
+            `;
 
-    campoPesquisa.addEventListener("keypress", (event) => {
-
-        if (event.key === "Enter") {
-            pesquisar();
         }
-
-    });
-
-}
-
-function pesquisar() {
-
-    const pesquisa = campoPesquisa.value.trim();
-
-    if (pesquisa === "") {
-
-        alert("Digite um assunto para pesquisar.");
-
-        return;
 
     }
 
-    alert(
-        "Você pesquisou: " +
-        pesquisa +
-        "\n\nA função de busca completa será integrada nas próximas versões do AgroStart."
-    );
-
 }
 
-// ===============================
-// CLIQUE NOS CARDS
-// ===============================
+// ==================================
+// GERAR HTML
+// ==================================
 
-const cards = document.querySelectorAll(".guide-card");
+function criarCardConteudo(dados) {
 
-cards.forEach(card => {
+    return `
+        <article class="guide-card">
 
-    card.addEventListener("click", () => {
+            <h3>${dados.titulo}</h3>
 
-        const titulo = card.querySelector("h3").innerText;
+            <p>
+                ${dados.descricao}
+            </p>
 
-        alert(
-            "Você selecionou:\n\n" +
-            titulo +
-            "\n\nEsta página será implementada em breve."
-        );
+            <button
+                class="btn-detalhes"
+                onclick='mostrarDetalhes(${JSON.stringify(dados)})'
+            >
+                Ler mais
+            </button>
+
+        </article>
+    `;
+}
+
+// ==================================
+// ACESSIBILIDADE
+// ==================================
+
+let tamanhoFonte = 100;
+
+document.getElementById("aumentarFonte")
+    ?.addEventListener("click", () => {
+
+        if (tamanhoFonte < 150) {
+            tamanhoFonte += 10;
+            document.body.style.fontSize =
+                tamanhoFonte + "%";
+        }
 
     });
 
-});
+document.getElementById("diminuirFonte")
+    ?.addEventListener("click", () => {
 
-// ===============================
-// MENSAGEM DE INICIALIZAÇÃO
-// ===============================
+        if (tamanhoFonte > 70) {
+            tamanhoFonte -= 10;
+            document.body.style.fontSize =
+                tamanhoFonte + "%";
+        }
 
-console.log("AgroStart carregado com sucesso!");
+    });
+
+document.getElementById("resetFonte")
+    ?.addEventListener("click", () => {
+
+        tamanhoFonte = 100;
+        document.body.style.fontSize = "100%";
+
+    });
+
+// ==================================
+// LEITOR DE TELA
+// ==================================
+
+document.getElementById("lerPagina")
+    ?.addEventListener("click", () => {
+
+        speechSynthesis.cancel();
+
+        const texto =
+            document.body.innerText;
+
+        const leitura =
+            new SpeechSynthesisUtterance(texto);
+
+        leitura.lang = "pt-BR";
+
+        speechSynthesis.speak(leitura);
+
+    });
+
+document.getElementById("pararLeitura")
+    ?.addEventListener("click", () => {
+
+        speechSynthesis.cancel();
+
+    });
 ```
 
 });
+
+// ==================================
+// JANELA DE DETALHES
+// ==================================
+
+function mostrarDetalhes(dados) {
+
+```
+alert(
+    dados.titulo +
+    "\n\n" +
+    dados.descricao
+);
+```
+
+}
