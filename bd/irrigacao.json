@@ -1,0 +1,99 @@
+{
+  "titulo": "Irrigação Sustentável",
+  "subtitulo": "Práticas e benefícios para uma agricultura eficiente",
+  "descricao": "A irrigação sustentável busca utilizar os recursos hídricos de forma eficiente, reduzindo impactos ambientais e aumentando a produtividade agrícola por meio de tecnologias e práticas inovadoras.",
+
+  "conceito": {
+    "nome": "O que é irrigação sustentável?",
+    "descricao": "É a gestão eficiente da água utilizada na agricultura, visando minimizar impactos ambientais, conservar recursos hídricos e garantir a produtividade das lavouras."
+  },
+
+  "tecnologias_e_praticas": [
+    {
+      "nome": "Irrigação Inteligente via IoT",
+      "descricao": "Utiliza sensores e dispositivos conectados para monitorar em tempo real as condições do solo e das culturas, permitindo a aplicação exata da quantidade de água necessária."
+    },
+    {
+      "nome": "Irrigação por Gotejamento Subsuperficial (SDI)",
+      "descricao": "Sistema que aplica água abaixo da superfície do solo, reduzindo perdas por evaporação e aumentando a eficiência da irrigação."
+    },
+    {
+      "nome": "Hidrogel Agrícola",
+      "descricao": "Material que armazena água no solo e a libera gradualmente para as plantas, aumentando a resistência das culturas em períodos de estiagem."
+    },
+    {
+      "nome": "Captação de Água da Chuva",
+      "descricao": "Coleta e armazenamento da água das chuvas para utilização posterior na irrigação."
+    },
+    {
+      "nome": "Reuso de Água",
+      "descricao": "Permite utilizar a mesma água mais de uma vez antes de retornar ao ciclo natural, contribuindo para a economia de recursos hídricos."
+    },
+    {
+      "nome": "Curvas de Nível",
+      "descricao": "Técnica que reduz a velocidade do escoamento da água da chuva, favorecendo a infiltração e reduzindo a erosão."
+    }
+  ],
+
+  "beneficios": [
+    {
+      "titulo": "Conservação do Solo",
+      "descricao": "Reduz a erosão e preserva a fertilidade do solo por meio da aplicação controlada de água."
+    },
+    {
+      "titulo": "Economia de Água",
+      "descricao": "Diminui desperdícios e aumenta a eficiência no uso dos recursos hídricos."
+    },
+    {
+      "titulo": "Uso Consciente de Energia",
+      "descricao": "Sistemas eficientes demandam menos energia e reduzem custos operacionais."
+    },
+    {
+      "titulo": "Aumento da Produtividade",
+      "descricao": "Fornece água na quantidade ideal para as culturas, melhorando o desenvolvimento das plantas."
+    },
+    {
+      "titulo": "Inovação Tecnológica",
+      "descricao": "Incentiva o uso de sensores, inteligência artificial, monitoramento remoto e automação agrícola."
+    },
+    {
+      "titulo": "Sustentabilidade Ambiental",
+      "descricao": "Contribui para a preservação dos recursos naturais e para a adaptação às mudanças climáticas."
+    }
+  ],
+
+  "tecnologias_digitais": [
+    "Internet das Coisas (IoT)",
+    "Inteligência Artificial (IA)",
+    "Sensoriamento Remoto",
+    "Automação de Equipamentos",
+    "Machine Learning",
+    "Monitoramento Climático",
+    "Plataformas de Gestão Hídrica"
+  ],
+
+  "conclusao": "A irrigação sustentável é uma das principais estratégias para garantir a segurança hídrica, aumentar a produtividade agrícola e promover a sustentabilidade no campo. O uso de tecnologias inteligentes permite produzir mais com menor consumo de água e menor impacto ambiental.",
+
+  "referencias_bibliograficas": [
+    {
+      "autor": "Jacto",
+      "titulo": "Irrigação sustentável: práticas e benefícios para uma agricultura eficiente",
+      "ano": "2024",
+      "data_publicacao": "30/07/2024",
+      "data_atualizacao": "07/08/2024",
+      "url": "https://blog.jacto.com.br/irrigacao-sustentavel/"
+    },
+    {
+      "autor": "Jacto",
+      "titulo": "Irrigação de precisão: como otimizar o uso da água com tecnologia",
+      "ano": "2022",
+      "url": "https://blog.jacto.com.br/irrigacao-de-precisao/"
+    },
+    {
+      "autor": "Jacto",
+      "titulo": "Como fazer o reuso de água na agricultura? Entenda aqui!",
+      "ano": "2022",
+      "url": "https://blog.jacto.com.br/reuso-de-agua-na-agricultura/"
+    }
+  ]
+}
