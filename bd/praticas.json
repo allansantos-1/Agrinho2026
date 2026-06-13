@@ -1,85 +1,26 @@
 {
-  "titulo": "Boas Práticas Agrícolas",
-  "subtitulo": "Sustentabilidade e oportunidades na agricultura",
-  "descricao": "As Boas Práticas Agrícolas (BPAs) são um conjunto de princípios, normas e recomendações técnicas que garantem a produção de alimentos de forma segura, sustentável e responsável.",
-
-  "principios": [
-    {
-      "nome": "Segurança Alimentar",
-      "descricao": "Garantir que os alimentos produzidos sejam seguros para o consumo humano."
-    },
-    {
-      "nome": "Sustentabilidade Ambiental",
-      "descricao": "Minimizar os impactos ambientais da produção agrícola e promover o uso responsável dos recursos naturais."
-    },
-    {
-      "nome": "Responsabilidade Social",
-      "descricao": "Promover condições de trabalho justas e respeitar os direitos dos trabalhadores rurais."
-    },
-    {
-      "nome": "Eficiência Econômica",
-      "descricao": "Aumentar a produtividade e a rentabilidade das atividades agrícolas."
-    }
-  ],
-
-  "beneficios": [
-    "Preservação ambiental",
-    "Uso responsável dos recursos naturais",
-    "Melhoria da qualidade dos alimentos",
-    "Redução de custos operacionais",
-    "Maior eficiência no uso de insumos",
-    "Acesso a mercados que exigem certificações de sustentabilidade",
-    "Aumento da competitividade do produtor rural"
-  ],
-
-  "exemplos_praticas": [
-    {
-      "nome": "Agricultura de Precisão",
-      "descricao": "Utilização de tecnologias para otimizar o uso de insumos, aumentar a eficiência e reduzir impactos ambientais."
-    },
-    {
-      "nome": "Irrigação Sustentável",
-      "descricao": "Aplicação de técnicas que conservam água e evitam a degradação ou salinização do solo."
-    },
-    {
-      "nome": "Manejo Responsável",
-      "descricao": "Uso planejado do solo e dos recursos naturais para garantir a produtividade e a conservação ambiental."
-    }
-  ],
-
-  "programas": [
-    {
-      "nome": "Programa BPA Brasil",
-      "ano_criacao": 2021,
-      "objetivo": "Reconhecer e incentivar programas que promovem Boas Práticas Agrícolas."
-    },
-    {
-      "nome": "AgroBrasil + Sustentável",
-      "objetivo": "Qualificar a sustentabilidade socioambiental das propriedades rurais e agregar valor à produção."
-    }
-  ],
-
-  "incentivos": [
-    "Certificações de conformidade",
-    "Bonificação em operações de custeio",
-    "Capacitações e treinamentos",
-    "Assistência técnica",
-    "Acesso a tecnologias e inovação",
-    "Programas de pesquisa e desenvolvimento"
-  ],
-
-  "referencias_bibliograficas": [
-    {
-      "autor": "Ministério da Agricultura e Pecuária (MAPA)",
-      "titulo": "Conheça as Boas Práticas Agrícolas que geram sustentabilidade e oportunidades na agricultura",
-      "ano": "2025",
-      "data_publicacao": "20/03/2025",
-      "url": "https://www.gov.br/agricultura/pt-br/assuntos/noticias/conheca-as-boas-praticas-agricolas-que-geram-sustentabilidade-e-oportunidades-na-agricultura"
-    },
-    {
-      "autor": "Ministério da Agricultura e Pecuária (MAPA)",
-      "titulo": "Boas Práticas Agrícolas",
-      "url": "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/boas-praticas-agricolas"
-    }
-  ]
+  "hortalicas": {
+    "titulo": "Hortaliças e Verduras",
+    "sub": "Cultura rápida e sensível",
+    "icon": "fa-seedling",
+    "preparo": "O preparo do solo deve ser feito com canteiros elevados e alta dosagem de matéria orgânica. Necessita de terra solta para permitir o bom crescimento de raízes finas.",
+    "dica": "Realize plantio escalonado (novas sementes a cada 15 dias) para ter colheitas contínuas.",
+    "espacamento": "15 a 30 cm entre plantas, a depender do tipo da hortaliça (ex: alface ou rúcula)."
+  },
+  "milho": {
+    "titulo": "Plantio de Milho",
+    "sub": "Cultura de grão e alta energia",
+    "icon": "fa-wheat-awn",
+    "preparo": "Excelente adaptação ao sistema de Plantio Direto sobre palhada. Exige nitrogênio abundante logo nas primeiras semanas de desenvolvimento das folhas.",
+    "dica": "A polinização do milho depende do vento, plante sempre em blocos (várias fileiras paralelas) e nunca em uma única linha comprida.",
+    "espacamento": "20 cm entre sementes, com fileiras de 70 a 90 cm de distância."
+  },
+  "soja": {
+    "titulo": "Cultivo de Soja",
+    "sub": "Líder em exportações e biomassa",
+    "icon": "fa-leaf",
+    "preparo": "Solo com acidez corrigida através de calcário (pH ideal entre 6.0 e 6.5). Exige inoculação de bactérias fixadoras de nitrogênio antes de semear para poupar fertilizante.",
+    "dica": "A profundidade da semente deve ser constante (entre 3 e 5 cm) para germinar uniformemente.",
+    "espacamento": "Distribuição média de 10 a 14 plantas por metro linear."
+  }
 }
