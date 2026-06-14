@@ -1,0 +1,28 @@
+{
+  "sistemas": {
+    "gotejamento": {
+      "nome": "Gotejamento Localizado",
+      "eficiencia": 95,
+      "aproveitamento": "Excelente",
+      "descricao": "A água vai direto para as raízes em gotas focadas, reduzindo drasticamente a evaporação e o crescimento de ervas daninhas entre as linhas."
+    },
+    "microaspersao": {
+      "nome": "Microaspersão Setorial",
+      "eficiencia": 85,
+      "aproveitamento": "Alto",
+      "descricao": "Lança microgotículas circulares com pressão controlada, criando o microclima ideal para pomares e cultivos delicados em estufas."
+    },
+    "aspersao": {
+      "nome": "Aspersão por Impacto",
+      "eficiencia": 75,
+      "aproveitamento": "Médio",
+      "descricao": "Simula uma chuva uniforme sobre toda a plantação por aspersores mecânicos. Exige atenção com ventos fortes que desviam as gotas."
+    },
+    "inundacao": {
+      "nome": "Inundação de Sulcos",
+      "eficiencia": 50,
+      "aproveitamento": "Baixo",
+      "descricao": "A água corre por canais abertos entre as fileiras. Apresenta alta perda por evaporação e infiltração profunda descontrolada."
+    }
+  }
+}
