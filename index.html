@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semeando Conhecimento | Agrinho 2026</title>
+    <title>Portal Semeando Conhecimento | Agrinho 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col transition-colors duration-300">
 
     <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
         <button id="theme-toggle" class="p-4 bg-agro text-white rounded-full shadow-2xl hover:bg-agro-dark transition-all card-hover flex items-center justify-center w-14 h-14" title="Alternar Modo Escuro">
@@ -22,7 +22,7 @@
         </button>
     </div>
 
-    <header class="bg-white dark:bg-agro-dark border-b border-slate-200 dark:border-agro/20 sticky top-0 z-40 transition-colors">
+    <header class="bg-white/90 dark:bg-agro-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-agro/20 sticky top-0 z-40 transition-colors">
         <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <div class="p-2.5 bg-agro/10 dark:bg-agro/30 rounded-xl text-agro-light">
@@ -30,135 +30,94 @@
                 </div>
                 <div>
                     <h1 class="font-title font-extrabold text-2xl text-agro dark:text-agro-light tracking-tight">Semeando Conhecimento</h1>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold tracking-wider uppercase">Concurso Agrinho 2026</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold tracking-wider uppercase">Painel de Apoio ao Agricultor</p>
                 </div>
             </div>
             
-            <nav class="flex items-center gap-1 md:gap-4">
-                <button onclick="switchTab('inicio')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-agro text-white dark:bg-agro-light dark:text-agro-dark" data-tab="inicio">
-                    <i class="fa-solid fa-house mr-1.5"></i>Início
-                </button>
-                <button onclick="switchTab('plantio')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all" data-tab="plantio">
-                    <i class="fa-solid fa-leaf mr-1.5"></i>Plantio
-                </button>
-                <button onclick="switchTab('irrigacao')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all" data-tab="irrigacao">
-                    <i class="fa-solid fa-droplet mr-1.5"></i>Irrigação
-                </button>
-                <button onclick="switchTab('nutrientes')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all" data-tab="nutrientes">
-                    <i class="fa-solid fa-flask mr-1.5"></i>Nutrientes
-                </button>
+            <nav class="flex items-center gap-2 md:gap-4 flex-wrap justify-center">
+                <a href="#inicio" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all">Início</a>
+                <a href="#sobre-agricultura" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all">A Agricultura</a>
+                <a href="#plantio" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all">Técnicas de Cultivo</a>
+                <a href="#irrigacao" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all">Sistemas de Rega</a>
+                <a href="#nutrientes" class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-agro/20 transition-all">Nutrição do Solo</a>
             </nav>
         </div>
     </header>
 
     <div class="bg-agro dark:bg-agro-dark text-white text-xs py-2 px-6 text-center border-b border-agro-light/20 transition-colors flex justify-center items-center gap-2 flex-wrap">
-        <span class="bg-white/20 px-2 py-0.5 rounded-full font-bold">Dica de Acessibilidade:</span>
-        <span>Dê um duplo clique em qualquer parágrafo ou título para ouvir a leitura de voz nativa!</span>
+        <span class="bg-white/20 px-2 py-0.5 rounded-full font-bold">Acessibilidade:</span>
+        <span>Dê duplo clique em qualquer texto para ouvir as instruções de cultivo por voz nativa.</span>
     </div>
 
-    <main class="flex-grow max-w-7xl mx-auto px-6 py-10 w-full">
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-10 w-full space-y-20">
         
-        <section id="tab-inicio" class="tab-content transition-opacity duration-300">
-            <div class="bg-gradient-to-br from-agro to-agro-dark dark:from-agro-dark dark:to-black text-white rounded-3xl p-8 md:p-12 shadow-xl mb-12 flex flex-col md:flex-row items-center justify-between gap-8">
+        <section id="inicio" class="pt-4">
+            <div class="bg-gradient-to-br from-agro to-agro-dark dark:from-agro-dark dark:to-black text-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
                 <div class="max-w-2xl">
-                    <span class="bg-agro-light text-agro-dark font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4">Inovação e Inclusão</span>
-                    <h2 class="font-title text-4xl md:text-5xl font-extrabold mb-4 leading-tight">O Futuro da Agricultura ao Alcance de Todos</h2>
-                    <p class="text-slate-200 text-lg mb-6 leading-relaxed">Uma plataforma desenvolvida para conectar pequenos e grandes agricultores com as melhores e mais sustentáveis práticas agrícolas, integrada com recursos de áudio e tradução oficial de LIBRAS.</p>
+                    <span class="bg-agro-light text-agro-dark font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4">Ferramenta de Campo Livre</span>
+                    <h2 class="font-title text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Tecnologia Prática para a sua Lavoura</h2>
+                    <p class="text-slate-200 text-lg mb-6 leading-relaxed">Acesse guias técnicos de plantio, tabelas de eficiência hídrica e diagnósticos de nutrientes de forma rápida, simplificada e com suporte total a áudio e LIBRAS para o trabalhador rural.</p>
                     <div class="flex gap-4 flex-wrap">
-                        <button onclick="switchTab('plantio')" class="bg-white hover:bg-slate-100 text-agro font-bold px-6 py-3 rounded-xl shadow-lg transition-all card-hover">
-                            Começar Aprendizado <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </button>
-                        <a href="#tecnologia" class="border border-white/30 hover:border-white text-white font-semibold px-6 py-3 rounded-xl transition-all">
-                            Conhecer Tecnologia
+                        <a href="#sobre-agricultura" class="bg-white hover:bg-slate-100 text-agro font-bold px-6 py-3 rounded-xl shadow-lg transition-all card-hover inline-block">
+                            Explorar o Portal <i class="fa-solid fa-arrow-down ml-2"></i>
                         </a>
                     </div>
                 </div>
                 <div class="w-full md:w-80 flex justify-center">
                     <div class="bg-white/10 p-6 rounded-3xl backdrop-blur-md border border-white/10 text-center w-full">
-                        <i class="fa-solid fa-hand-peace text-5xl text-agro-light mb-4 animate-bounce"></i>
-                        <h4 class="font-bold text-lg mb-1">Acessibilidade Total</h4>
-                        <p class="text-xs text-slate-300">Avatar em LIBRAS 3D oficial no canto inferior para navegação de deficientes auditivos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white dark:bg-agro-dark/40 border border-slate-200 dark:border-agro/20 p-8 rounded-2xl transition-all card-hover">
-                    <div class="text-agro-light text-4xl mb-4"><i class="fa-solid fa-seedling"></i></div>
-                    <h3 class="font-title font-bold text-xl mb-2 text-agro dark:text-slate-100">Práticas de Cultivo</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Aprenda a aplicar de forma correta e sem desperdício as principais técnicas de plantio para maior produtividade.</p>
-                </div>
-                <div class="bg-white dark:bg-agro-dark/40 border border-slate-200 dark:border-agro/20 p-8 rounded-2xl transition-all card-hover">
-                    <div class="text-agro-light text-4xl mb-4"><i class="fa-solid fa-droplet"></i></div>
-                    <h3 class="font-title font-bold text-xl mb-2 text-agro dark:text-slate-100">Regas Estruturadas</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Entenda os diversos tipos de irrigação, identificando qual se adapta melhor ao seu solo e cultura.</p>
-                </div>
-                <div class="bg-white dark:bg-agro-dark/40 border border-slate-200 dark:border-agro/20 p-8 rounded-2xl transition-all card-hover">
-                    <div class="text-agro-light text-4xl mb-4"><i class="fa-solid fa-vial"></i></div>
-                    <h3 class="font-title font-bold text-xl mb-2 text-agro dark:text-slate-100">Balanço Nutricional</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Descubra as dosagens de macro e micronutrientes para manter as suas plantas fortes e imunes a pragas.</p>
-                </div>
-            </div>
-
-            <div id="tecnologia" class="bg-white dark:bg-agro-dark/30 border border-slate-200 dark:border-agro/10 rounded-3xl p-8 transition-all">
-                <h3 class="font-title font-extrabold text-2xl text-agro dark:text-agro-light mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-code"></i> Arquitetura de Software do Site
-                </h3>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Para este concurso, prezamos por um desenvolvimento de software limpo e independente. Todas as listagens de culturas, métodos e irrigação que você vê aqui são carregadas de forma assíncrona baseadas na estrutura de repositórios do nosso GitHub.</p>
-                        <ul class="space-y-3 text-sm font-medium text-slate-700 dark:text-slate-300">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agro-light"></i> Repositório <code>irrigacao.json</code> para inteligência hídrica</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agro-light"></i> Repositório <code>praticas.json</code> para técnicas de solo</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agro-light"></i> Interface de dados totalmente desacoplada e escalável</li>
-                        </ul>
-                    </div>
-                    <div class="bg-slate-950 dark:bg-black p-5 rounded-2xl border border-slate-800 text-xs text-emerald-400 font-mono shadow-inner">
-                        <div class="flex justify-between items-center mb-3 border-b border-slate-800 pb-2 text-slate-500">
-                            <span>bd / praticas.json</span>
-                            <span class="w-3.5 h-3.5 rounded-full bg-agro-light inline-block"></span>
-                        </div>
-                        <pre class="overflow-x-auto whitespace-pre-wrap">
-{
-  "plantio_direto": {
-    "titulo": "Plantio Direto",
-    "espacamento": "Ideal para conservação do solo",
-    "cobertura": "Palhada seca orgânica",
-    "beneficio": "Redução em até 40% da perda de umidade"
-  }
-}</pre>
+                        <i class="fa-solid fa-universal-access text-5xl text-agro-light mb-4"></i>
+                        <h4 class="font-bold text-lg mb-1">Inclusão no Campo</h4>
+                        <p class="text-xs text-slate-300">Interface adaptada com leitor de tela integrado para produtores com dificuldades visuais ou de leitura.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tab-plantio" class="tab-content hidden transition-opacity duration-300">
-            <h2 class="slide-title font-title font-extrabold text-3xl mb-2 text-agro dark:text-agro-light">Técnicas de Plantio</h2>
-            <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl">Mapeamento dinâmico alimentado pelo banco de dados <code>praticas.json</code>. Clique nos botões para alternar entre as culturas.</p>
+        <section id="sobre-agricultura" class="scroll-mt-24 space-y-12">
+            <div class="border-b border-slate-200 dark:border-agro/20 pb-4">
+                <h2 class="font-title font-extrabold text-3xl text-agro dark:text-agro-light">O Papel da Agricultura no Mundo</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Compreenda o conceito, a importância socioeconómica e os diferentes modelos e alertas ecológicos da atividade que move o planeta.</p>
+            </div>
+            
+            <div id="agro-conceito-container"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="agricultura-cards"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl" id="agro-tipos-container"></div>
+                <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl flex flex-col justify-between" id="agro-sistemas-container"></div>
+            </div>
+        </section>
+
+        <section id="plantio" class="scroll-mt-24">
+            <div class="border-b border-slate-200 dark:border-agro/20 pb-4 mb-8">
+                <h2 class="font-title font-extrabold text-3xl text-agro dark:text-agro-light">Guias Técnicos de Cultivo</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Selecione uma cultura abaixo para carregar instantaneamente o mapa de espaçamento e as instruções de preparo de solo configurados na base de dados.</p>
+            </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                <div class="flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 scrollbar-none" id="plantio-selector">
-                </div>
-                <div class="lg:col-span-3 bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl transition-colors" id="plantio-details">
-                </div>
+                <div class="flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 scrollbar-none" id="plantio-selector"></div>
+                <div class="lg:col-span-3 bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl min-h-[300px]" id="plantio-details"></div>
             </div>
         </section>
 
-        <section id="tab-irrigacao" class="tab-content hidden transition-opacity duration-300">
-            <h2 class="slide-title font-title font-extrabold text-3xl mb-2 text-agro dark:text-agro-light">Sistemas de Irrigação</h2>
-            <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl">Comparação inteligente de métodos de irrigação utilizando dados do arquivo local <code>irrigacao.json</code>.</p>
+        <section id="irrigacao" class="scroll-mt-24">
+            <div class="border-b border-slate-200 dark:border-agro/20 pb-4 mb-8">
+                <h2 class="font-title font-extrabold text-3xl text-agro dark:text-agro-light">Calculadora de Eficiência Hídrica</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Compare os sistemas de rega disponíveis para evitar o desperdício de água e reduzir os custos de energia na propriedade rural.</p>
+            </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-6 rounded-2xl transition-all card-hover flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 text-xl">
                             <i class="fa-solid fa-faucet-drip"></i>
                         </div>
                         <h3 class="font-title font-bold text-xl mb-2 text-slate-800 dark:text-slate-200">Gotejamento</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">A água é gotejada diretamente nas raízes das plantas por meio de tubos perfurados. Ideal para economizar água e evitar umidade foliar excessiva.</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">A água vai direto para as raízes em gotas focadas, reduzindo drasticamente a evaporação e o crescimento de ervas daninhas entre as linhas.</p>
                     </div>
                     <div class="border-t border-slate-100 dark:border-agro/10 pt-4 mt-4 flex justify-between text-xs font-semibold text-slate-500">
-                        <span>Economia Hídrica: <strong class="text-agro-light font-bold">Excelente</strong></span>
+                        <span>Aproveitamento: <strong class="text-agro-light font-bold">Excelente</strong></span>
                         <span>Eficiência: <strong>95%</strong></span>
                     </div>
                 </div>
@@ -168,103 +127,105 @@
                         <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-950/50 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-4 text-xl">
                             <i class="fa-solid fa-shower"></i>
                         </div>
-                        <h3 class="font-title font-bold text-xl mb-2 text-slate-800 dark:text-slate-200">Aspersão</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Simula chuva natural por aspersores mecânicos rotativos. É um método versátil que atende amplas plantações de culturas anuais.</p>
+                        <h3 class="font-title font-bold text-xl mb-2 text-slate-800 dark:text-slate-200">Microaspersão</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Lança microgotículas circulares com pressão controlada, criando o microclima ideal para pomares e cultivos delicados em estufas.</p>
                     </div>
                     <div class="border-t border-slate-100 dark:border-agro/10 pt-4 mt-4 flex justify-between text-xs font-semibold text-slate-500">
-                        <span>Economia Hídrica: <strong>Média</strong></span>
-                        <span>Eficiência: <strong>75%</strong></span>
+                        <span>Aproveitamento: <strong>Alto</strong></span>
+                        <span>Eficiência: <strong>85%</strong></span>
                     </div>
                 </div>
 
                 <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-6 rounded-2xl transition-all card-hover flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/50 flex items-center justify-center text-agro-light mb-4 text-xl">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-4 text-xl">
                             <i class="fa-solid fa-water"></i>
                         </div>
-                        <h3 class="font-title font-bold text-xl mb-2 text-slate-800 dark:text-slate-200">Microaspersão</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Uma combinação sutil que lança gotículas de água de forma focada e controlada. Muito usado em pomares de frutas e viveiros.</p>
+                        <h3 class="font-title font-bold text-xl mb-2 text-slate-800 dark:text-slate-200">Aspersão Comum</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Simula uma chuva uniforme sobre toda a plantação por aspersores mecânicos. Exige atenção com ventos fortes que desviam as gotas.</p>
                     </div>
                     <div class="border-t border-slate-100 dark:border-agro/10 pt-4 mt-4 flex justify-between text-xs font-semibold text-slate-500">
-                        <span>Economia Hídrica: <strong>Alta</strong></span>
-                        <span>Eficiência: <strong>85%</strong></span>
+                        <span>Aproveitamento: <strong>Médio</strong></span>
+                        <span>Eficiência: <strong>75%</strong></span>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/10 p-8 rounded-3xl">
-                <h3 class="font-title font-bold text-xl mb-6 text-agro dark:text-agro-light">Consumo e Eficiência Hídrica por Método</h3>
+                <h3 class="font-title font-bold text-lg mb-6 text-slate-800 dark:text-slate-200">Painel Comparativo de Aproveitamento Real</h3>
                 <div class="space-y-4">
                     <div>
                         <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>Gotejamento</span>
-                            <span class="text-agro-light">95% Eficiente</span>
+                            <span>Gotejamento Localizado</span>
+                            <span class="text-agro-light">95%</span>
                         </div>
-                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-4 rounded-full overflow-hidden">
-                            <div class="bg-agro-light h-full rounded-full transition-all duration-1000" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>Microaspersão</span>
-                            <span class="text-cyan-500">85% Eficiente</span>
-                        </div>
-                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-4 rounded-full overflow-hidden">
-                            <div class="bg-cyan-500 h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
+                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-3 rounded-full overflow-hidden">
+                            <div class="bg-agro-light h-full rounded-full" style="width: 95%"></div>
                         </div>
                     </div>
                     <div>
                         <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>Aspersão Comum</span>
-                            <span class="text-amber-500">75% Eficiente</span>
+                            <span>Microaspersão Setorial</span>
+                            <span class="text-cyan-500">85%</span>
                         </div>
-                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-4 rounded-full overflow-hidden">
-                            <div class="bg-amber-500 h-full rounded-full transition-all duration-1000" style="width: 75%"></div>
+                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-3 rounded-full overflow-hidden">
+                            <div class="bg-cyan-500 h-full rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
                     <div>
                         <div class="flex justify-between text-sm font-semibold mb-1">
-                            <span>Inundação (Canaletas)</span>
-                            <span class="text-rose-500">50% Eficiente</span>
+                            <span>Aspersão por Impacto</span>
+                            <span class="text-amber-500">75%</span>
                         </div>
-                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-4 rounded-full overflow-hidden">
-                            <div class="bg-rose-500 h-full rounded-full transition-all duration-1000" style="width: 50%"></div>
+                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-3 rounded-full overflow-hidden">
+                            <div class="bg-amber-500 h-full rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm font-semibold mb-1">
+                            <span>Inundação de Sulcos</span>
+                            <span class="text-rose-500">50%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-agro-dark/40 h-3 rounded-full overflow-hidden">
+                            <div class="bg-rose-500 h-full rounded-full" style="width: 50%"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tab-nutrientes" class="tab-content hidden transition-opacity duration-300">
-            <h2 class="slide-title font-title font-extrabold text-3xl mb-2 text-agro dark:text-agro-light">Nutrição e Fortalecimento</h2>
-            <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl">Diferenciação científica prática dos componentes necessários para manter a fertilidade das suas plantas.</p>
+        <section id="nutrientes" class="scroll-mt-24">
+            <div class="border-b border-slate-200 dark:border-agro/20 pb-4 mb-8">
+                <h2 class="font-title font-extrabold text-3xl text-agro dark:text-agro-light">Diagnóstico Nutricional do Solo</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Guia prático visual para identificar carências minerais estruturais e aplicar adubação corretiva no talhão.</p>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl">
-                    <span class="bg-agro-light/10 text-agro-light font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4">Base de Crescimento</span>
-                    <h3 class="font-title font-bold text-2xl mb-4 text-slate-800 dark:text-slate-200">Macronutrientes (N-P-K)</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">São os elementos consumidos em maiores volumes e essenciais para a estrutura inicial, crescimento das folhas e desenvolvimento das raízes.</p>
+                    <span class="bg-agro-light/10 text-agro-light font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4">Componentes Estruturais</span>
+                    <h3 class="font-title font-bold text-2xl mb-4 text-slate-800 dark:text-slate-200">Macronutrientes Principais (N-P-K)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">São os elementos químicos consumidos em larga escala pela lavoura. A falta de qualquer um deles interrompe o ciclo produtivo imediatamente.</p>
                     
                     <div class="space-y-4">
                         <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl flex gap-4 items-start">
                             <div class="bg-agro text-white font-bold w-10 h-10 flex items-center justify-center rounded-xl shrink-0">N</div>
                             <div>
-                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Nitrogênio</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Responsável pelo vigor foliar e o verde intenso (clorofila).</p>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Nitrogênio (Crescimento Foliar)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Garante folhas verde-escuras e acelera o crescimento do caule. Folhas amareladas na base indicam falta de nitrogênio.</p>
                             </div>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl flex gap-4 items-start">
                             <div class="bg-agro text-white font-bold w-10 h-10 flex items-center justify-center rounded-xl shrink-0">P</div>
                             <div>
-                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Fósforo</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Estimula o enraizamento e a floração inicial saudável das mudas.</p>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Fósforo (Arraigamento e Energia)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Essencial no início do cultivo para fixar raízes fortes e garantir flores saudáveis. Folhas arroxeadas apontam carência severa.</p>
                             </div>
                         </div>
                         <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl flex gap-4 items-start">
                             <div class="bg-agro text-white font-bold w-10 h-10 flex items-center justify-center rounded-xl shrink-0">K</div>
                             <div>
-                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Potássio</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Ajuda na defesa natural da planta e circulação hídrica interna.</p>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Potássio (Peso e Imunidade)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Protege a planta contra a seca, engrossando os frutos e grãos. Bordas das folhas secas ou com aspeto queimado indicam falta deste mineral.</p>
                             </div>
                         </div>
                     </div>
@@ -272,33 +233,33 @@
 
                 <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl flex flex-col justify-between">
                     <div>
-                        <span class="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4">Defesa e Regulação</span>
-                        <h3 class="font-title font-bold text-2xl mb-4 text-slate-800 dark:text-slate-200">Micronutrientes</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">São necessários em pequenas doses, mas cruciais como ativadores químicos para proteger o cultivo de estresses térmicos e pragas oportunistas.</p>
+                        <span class="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-4">Reguladores Biológicos</span>
+                        <h3 class="font-title font-bold text-2xl mb-4 text-slate-800 dark:text-slate-200">Micronutrientes de Proteção</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">Exigidos em doses menores, mas atuam como escudos defensores químicos contra pragas e estresses climáticos severos.</p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl">
                                 <h4 class="font-bold text-agro-light mb-1">Zinco (Zn)</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Regula os hormônios de desenvolvimento e tamanho foliar.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Regula a produção de hormônios do crescimento e previne folhas miúdas e atrofiadas.</p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl">
                                 <h4 class="font-bold text-agro-light mb-1">Boro (B)</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Essencial no transporte de açúcares das raízes aos frutos.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Atua diretamente na formação de frutos perfeitos e evita rachaduras ou vazios internos.</p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl">
                                 <h4 class="font-bold text-agro-light mb-1">Ferro (Fe)</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Garante o funcionamento celular e respiração das folhas.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Evita a clorose, mantendo a fotossíntese activa mesmo em solos mais argilosos compactados.</p>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-agro-dark/40 border border-slate-150 dark:border-agro/10 rounded-2xl">
                                 <h4 class="font-bold text-agro-light mb-1">Cálcio (Ca)</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Dá resistência às paredes celulares das raízes e folhas.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Fortalece a casca dos frutos e impede a podridão estilar (fundo preto no tomate).</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="mt-8 p-4 bg-amber-500/10 text-amber-700 dark:text-amber-300 rounded-2xl border border-amber-500/20 text-xs flex items-center gap-3">
-                        <i class="fa-solid fa-triangle-exclamation text-xl"></i>
-                        <span><strong>Nota Técnica:</strong> A falta de micronutrientes pode imobilizar a absorção total de água e nitrogênio, mesmo com o solo irrigado de forma correta.</span>
+                        <i class="fa-solid fa-circle-exclamation text-xl shrink-0"></i>
+                        <span><strong>Regra de Ouro:</strong> Aplicar apenas adubação N-P-K sem fazer a correção prévia da acidez da terra com calcário anula o efeito de absorção dos nutrientes pelas raízes.</span>
                     </div>
                 </div>
             </div>
@@ -306,15 +267,15 @@
 
     </main>
 
-    <footer class="bg-white dark:bg-agro-dark/80 text-slate-500 dark:text-slate-400 text-sm py-10 border-t border-slate-200 dark:border-agro/20 transition-colors">
+    <footer class="bg-white dark:bg-agro-dark border-t border-slate-200 dark:border-agro/20 text-slate-500 dark:text-slate-400 text-sm py-10 transition-colors">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
                 <p class="font-bold text-agro dark:text-agro-light font-title text-base mb-1">Plataforma Agrinho 2026</p>
-                <p class="text-xs">Cultivando conhecimento, germinando oportunidades e incluindo vidas.</p>
+                <p class="text-xs">Canal de utilidade pública agrícola, responsabilidade técnica e inclusão social no campo.</p>
             </div>
             <div class="flex gap-4">
-                <span class="px-3.5 py-1.5 bg-agro/10 text-agro dark:text-agro-light rounded-lg text-xs font-bold border border-agro/20"><i class="fa-solid fa-shield-halved mr-1.5"></i>Acessibilidade 100%</span>
-                <span class="px-3.5 py-1.5 bg-agro/10 text-agro dark:text-agro-light rounded-lg text-xs font-bold border border-agro/20"><i class="fa-solid fa-code-fork mr-1.5"></i>JSON Local</span>
+                <span class="px-3.5 py-1.5 bg-agro/5 text-agro dark:text-agro-light rounded-lg text-xs font-bold border border-agro/10">Interface Scroll</span>
+                <span class="px-3.5 py-1.5 bg-agro/5 text-agro dark:text-agro-light rounded-lg text-xs font-bold border border-agro/10">Bases de Dados JSON</span>
             </div>
         </div>
     </footer>
