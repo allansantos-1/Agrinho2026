@@ -1,26 +1,28 @@
 {
-  "hortalicas": {
-    "titulo": "Hortaliças e Verduras",
-    "sub": "Cultura rápida e de alto monitoramento",
-    "icon": "fa-seedling",
-    "preparo": "O solo deve ser trabalhado em canteiros elevados (20 a 30 cm) para evitar encharcamento das raízes. Exige a incorporação profunda de composto orgânico curtido ou húmus de minhoca.",
-    "dica": "Realize plantios em lotes rotativos a cada 14 dias para garantir uma colheita e abastecimento comercial ininterruptos ao longo do ano.",
-    "espacamento": "15 a 30 cm entre plantas, variando conforme a variedade (folhas abertas ou cabeças compactas como alface)."
-  },
-  "milho": {
-    "titulo": "Cultura do Milho",
-    "sub": "Produção de grãos e silagem energética",
-    "icon": "fa-wheat-awn",
-    "preparo": "Altamente beneficiado pelo Plantio Direto sobre palhada residual anterior. Requer alta disponibilidade de nitrogênio nas primeiras 4 semanas de desenvolvimento foliar.",
-    "dica": "A polinização ocorre pelo vento. Certifique-se de plantar em blocos quadrados (mínimo de 4 linhas paralelas) e nunca em uma única linha longa isolada.",
-    "espacamento": "20 cm de distância entre sementes na linha, com espaçamento entre fileiras de 70 a 90 cm."
-  },
-  "soja": {
-    "titulo": "Cultivo de Soja",
-    "sub": "Grande cultura e fixação de biomassa",
-    "icon": "fa-leaf",
-    "preparo": "Exige correção cirúrgica da acidez do solo via calagem (pH ideal estabilizado entre 6.0 e 6.5). Realizar inoculação com bactérias fixadoras (Bradyrhizobium) antes de semear.",
-    "dica": "Mantenha a profundidade do depósito de sementes estritamente entre 3 e 5 cm para atingir uma germinação e emergência uniforme no talhão.",
-    "espacamento": "Distribuição regulada para atingir a média de 10 a 14 plantas por metro linear de sulco."
+  "sistemas": {
+    "gotejamento": {
+      "nome": "Gotejamento Localizado",
+      "eficiencia": 95,
+      "aproveitamento": "Excelente",
+      "descricao": "A água vai direto para as raízes em gotas focadas, reduzindo drasticamente a evaporação e o crescimento de ervas daninhas entre as linhas."
+    },
+    "microaspersao": {
+      "nome": "Microaspersão Setorial",
+      "eficiencia": 85,
+      "aproveitamento": "Alto",
+      "descricao": "Lança microgotículas circulares com pressão controlada, criando o microclima ideal para pomares e cultivos delicados em estufas."
+    },
+    "aspersao": {
+      "nome": "Aspersão por Impacto",
+      "eficiencia": 75,
+      "aproveitamento": "Médio",
+      "descricao": "Simula uma chuva uniforme sobre toda a plantação por aspersores mecânicos. Exige atenção com ventos fortes que desviam as gotas."
+    },
+    "inundacao": {
+      "nome": "Inundação de Sulcos",
+      "eficiencia": 50,
+      "aproveitamento": "Baixo",
+      "descricao": "A água corre por canais abertos entre as fileiras. Apresenta alta perda por evaporação e infiltração profunda descontrolada."
+    }
   }
 }
