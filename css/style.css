@@ -1,10 +1,10 @@
 body {
     font-family: 'Inter', sans-serif;
-    transition: background-color 0.3s, color 0.3s;
 }
 .font-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
+/* Estilização da barra de rolagem customizada */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -18,7 +18,11 @@ body {
     background: #22c55e;
     border-radius: 10px;
 }
+/* Efeito suave de elevação para os blocos */
+.card-hover {
+    transition: all 0.25s ease-in-out;
+}
 .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -10px rgba(34, 197, 94, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -8px rgba(34, 197, 94, 0.2);
 }
