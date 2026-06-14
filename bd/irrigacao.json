@@ -1,26 +1,28 @@
 {
-  "gotejamento": {
-    "nome": "Gotejamento",
-    "eficiencia": 95,
-    "classificacao": "Excelente",
-    "descricao": "A água é gotejada diretamente nas raízes das plantas por meio de tubos perfurados. Ideal para economizar água e evitar umidade foliar excessiva."
-  },
-  "microaspersao": {
-    "nome": "Microaspersão",
-    "eficiencia": 85,
-    "classificacao": "Alta",
-    "descricao": "Uma combinação sutil que lança gotículas de água de forma focada e controlada. Muito usado em pomares de frutas e viveiros."
-  },
-  "aspersao": {
-    "nome": "Aspersão Comum",
-    "eficiencia": 75,
-    "classificacao": "Média",
-    "descricao": "Simula chuva natural por aspersores mecânicos rotativos. É um método versátil que atende amplas plantações de culturas anuais."
-  },
-  "inundacao": {
-    "nome": "Inundação (Canaletas)",
-    "eficiencia": 50,
-    "classificacao": "Baixa",
-    "descricao": "A água é aplicada diretamente sobre a superfície do solo por gravidade através de sulcos ou bacias."
+  "sistemas": {
+    "gotejamento": {
+      "nome": "Gotejamento Localizado",
+      "eficiencia": 95,
+      "aproveitamento": "Excelente",
+      "descricao": "A água vai direto para as raízes em gotas focadas, reduzindo drasticamente a evaporação e o crescimento de ervas daninhas entre as linhas."
+    },
+    "microaspersao": {
+      "nome": "Microaspersão Setorial",
+      "eficiencia": 85,
+      "aproveitamento": "Alto",
+      "descricao": "Lança microgotículas circulares com pressão controlada, criando o microclima ideal para pomares e cultivos delicados em estufas."
+    },
+    "aspersao": {
+      "nome": "Aspersão por Impacto",
+      "eficiencia": 75,
+      "aproveitamento": "Médio",
+      "descricao": "Simula uma chuva uniforme sobre toda a plantação por aspersores mecânicos. Exige atenção com ventos fortes que desviam as gotas."
+    },
+    "inundacao": {
+      "nome": "Inundação de Sulcos",
+      "eficiencia": 50,
+      "aproveitamento": "Baixo",
+      "descricao": "A água corre por canais abertos entre as fileiras. Apresenta alta perda por evaporação e infiltração profunda descontrolada."
+    }
   }
 }
