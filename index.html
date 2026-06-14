@@ -1,26 +1,303 @@
-{
-  "hortalicas": {
-    "titulo": "Hortaliças e Verduras",
-    "sub": "Cultura rápida e de alto monitoramento",
-    "icon": "fa-seedling",
-    "preparo": "O solo deve ser trabalhado em canteiros elevados (20 a 30 cm) para evitar encharcamento das raízes. Exige a incorporação profunda de composto orgânico curtido ou húmus de minhoca.",
-    "dica": "Realize plantios em lotes rotativos a cada 14 dias para garantir uma colheita e abastecimento comercial ininterruptos ao longo do ano.",
-    "espacamento": "15 a 30 cm entre plantas, variando conforme a variedade (folhas abertas ou cabeças compactas como alface)."
-  },
-  "milho": {
-    "titulo": "Cultura do Milho",
-    "sub": "Produção de grãos e silagem energética",
-    "icon": "fa-wheat-awn",
-    "preparo": "Altamente beneficiado pelo Plantio Direto sobre palhada residual anterior. Requer alta disponibilidade de nitrogênio nas primeiras 4 semanas de desenvolvimento foliar.",
-    "dica": "A polinização ocorre pelo vento. Certifique-se de plantar em blocos quadrados (mínimo de 4 linhas paralelas) e nunca em uma única linha longa isolada.",
-    "espacamento": "20 cm de distância entre sementes na linha, com espaçamento entre fileiras de 70 a 90 cm."
-  },
-  "soja": {
-    "titulo": "Cultivo de Soja",
-    "sub": "Grande cultura e fixação de biomassa",
-    "icon": "fa-leaf",
-    "preparo": "Exige correção cirúrgica da acidez do solo via calagem (pH ideal estabilizado entre 6.0 e 6.5). Realizar inoculação com bactérias fixadoras (Bradyrhizobium) antes de semear.",
-    "dica": "Mantenha a profundidade do depósito de sementes estritamente entre 3 e 5 cm para atingir uma germinação e emergência uniforme no talhão.",
-    "espacamento": "Distribuição regulada para atingir a média de 10 a 14 plantas por metro linear de sulco."
-  }
-}
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Semeando Conhecimento | Agrinho 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="floating-tools">
+        <button id="theme-toggle" class="floating-button theme-button" title="Alternar Modo Escuro">
+            <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <button id="speech-indicator" class="floating-button speech-button hidden" title="Lendo texto...">
+            <i class="fa-solid fa-volume-high"></i>
+        </button>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-area">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div>
+                    <h1>Semeando Conhecimento</h1>
+                    <p>Painel de Apoio ao Agricultor</p>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#inicio">Início</a>
+                <a href="#sobre-agricultura">A Agricultura</a>
+                <a href="#plantio">Técnicas de Cultivo</a>
+                <a href="#irrigacao">Sistemas de Rega</a>
+                <a href="#nutrientes">Nutrição do Solo</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="accessibility-bar">
+        <span>Acessibilidade:</span>
+        <p>Dê duplo clique em qualquer texto para ouvir as instruções de cultivo por voz nativa.</p>
+    </div>
+
+    <main class="page-content">
+
+        <section id="inicio" class="hero-section">
+            <div class="hero-card">
+                <div class="hero-text">
+                    <span class="tag-label">Ferramenta de Campo Livre</span>
+                    <h2>Tecnologia Prática para a sua Lavoura</h2>
+                    <p>Acesse guias técnicos de plantio, tabelas de eficiência hídrica e diagnósticos de nutrientes de forma rápida, simplificada e com suporte total a áudio e LIBRAS para o trabalhador rural.</p>
+                    <div class="button-row">
+                        <a href="#sobre-agricultura" class="primary-button">
+                            Explorar o Portal <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-feature">
+                    <div class="feature-box translucent-box">
+                        <i class="fa-solid fa-universal-access"></i>
+                        <h4>Inclusão no Campo</h4>
+                        <p>Interface adaptada com leitor de tela integrado para produtores com dificuldades visuais ou de leitura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-agricultura" class="content-section">
+            <div class="section-title">
+                <h2>O Papel da Agricultura no Mundo</h2>
+                <p>Compreenda o conceito, a importância socioeconômica e os diferentes modelos e alertas ecológicos da atividade que move o planeta.</p>
+            </div>
+
+            <div id="agro-conceito-container"></div>
+
+            <div class="cards-grid cards-grid-three" id="agricultura-cards"></div>
+
+            <div class="cards-grid cards-grid-two">
+                <div class="content-box" id="agro-tipos-container"></div>
+                <div class="content-box flex-between" id="agro-sistemas-container"></div>
+            </div>
+        </section>
+
+        <section id="plantio" class="content-section">
+            <div class="section-title section-title-spaced">
+                <h2>Guias Técnicos de Cultivo</h2>
+                <p>Selecione uma cultura abaixo para carregar instantaneamente o mapa de espaçamento e as instruções de preparo de solo configurados na base de dados.</p>
+            </div>
+
+            <div class="planting-layout">
+                <div class="planting-selector" id="plantio-selector"></div>
+                <div class="content-box planting-details" id="plantio-details"></div>
+            </div>
+        </section>
+
+        <section id="irrigacao" class="content-section">
+            <div class="section-title section-title-spaced">
+                <h2>Calculadora de Eficiência Hídrica</h2>
+                <p>Compare os sistemas de rega disponíveis para evitar o desperdício de água e reduzir os custos de energia na propriedade rural.</p>
+            </div>
+
+            <div class="cards-grid cards-grid-three irrigation-cards">
+                <article class="info-card">
+                    <div>
+                        <div class="icon-box icon-blue">
+                            <i class="fa-solid fa-faucet-drip"></i>
+                        </div>
+                        <h3>Gotejamento</h3>
+                        <p>A água vai direto para as raízes em gotas focadas, reduzindo drasticamente a evaporação e o crescimento de ervas daninhas entre as linhas.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span>Aproveitamento: <strong class="highlight-green">Excelente</strong></span>
+                        <span>Eficiência: <strong>95%</strong></span>
+                    </div>
+                </article>
+
+                <article class="info-card">
+                    <div>
+                        <div class="icon-box icon-cyan">
+                            <i class="fa-solid fa-shower"></i>
+                        </div>
+                        <h3>Microaspersão</h3>
+                        <p>Lança microgotículas circulares com pressão controlada, criando o microclima ideal para pomares e cultivos delicados em estufas.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span>Aproveitamento: <strong>Alto</strong></span>
+                        <span>Eficiência: <strong>85%</strong></span>
+                    </div>
+                </article>
+
+                <article class="info-card">
+                    <div>
+                        <div class="icon-box icon-amber">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h3>Aspersão Comum</h3>
+                        <p>Simula uma chuva uniforme sobre toda a plantação por aspersores mecânicos. Exige atenção com ventos fortes que desviam as gotas.</p>
+                    </div>
+                    <div class="card-meta">
+                        <span>Aproveitamento: <strong>Médio</strong></span>
+                        <span>Eficiência: <strong>75%</strong></span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="content-box comparison-panel">
+                <h3>Painel Comparativo de Aproveitamento Real</h3>
+
+                <div class="progress-list">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Gotejamento Localizado</span>
+                            <span class="highlight-green">95%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill progress-green progress-width-95"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Microaspersão Setorial</span>
+                            <span class="highlight-cyan">85%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill progress-cyan progress-width-85"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Aspersão por Impacto</span>
+                            <span class="highlight-amber">75%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill progress-amber progress-width-75"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Inundação de Sulcos</span>
+                            <span class="highlight-rose">50%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill progress-rose progress-width-50"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nutrientes" class="content-section">
+            <div class="section-title section-title-spaced">
+                <h2>Diagnóstico Nutricional do Solo</h2>
+                <p>Guia prático visual para identificar carências minerais estruturais e aplicar adubação corretiva no talhão.</p>
+            </div>
+
+            <div class="cards-grid cards-grid-two">
+                <article class="content-box">
+                    <span class="tag-label soft-label">Componentes Estruturais</span>
+                    <h3>Macronutrientes Principais (N-P-K)</h3>
+                    <p class="intro-text">São os elementos químicos consumidos em larga escala pela lavoura. A falta de qualquer um deles interrompe o ciclo produtivo imediatamente.</p>
+
+                    <div class="nutrient-list">
+                        <div class="nutrient-item">
+                            <div class="nutrient-letter">N</div>
+                            <div>
+                                <h4>Nitrogênio (Crescimento Foliar)</h4>
+                                <p>Garante folhas verde-escuras e acelera o crescimento do caule. Folhas amareladas na base indicam falta de nitrogênio.</p>
+                            </div>
+                        </div>
+
+                        <div class="nutrient-item">
+                            <div class="nutrient-letter">P</div>
+                            <div>
+                                <h4>Fósforo (Arraigamento e Energia)</h4>
+                                <p>Essencial no início do cultivo para fixar raízes fortes e garantir flores saudáveis. Folhas arroxeadas apontam carência severa.</p>
+                            </div>
+                        </div>
+
+                        <div class="nutrient-item">
+                            <div class="nutrient-letter">K</div>
+                            <div>
+                                <h4>Potássio (Peso e Imunidade)</h4>
+                                <p>Protege a planta contra a seca, engrossando os frutos e grãos. Bordas das folhas secas ou com aspeto queimado indicam falta deste mineral.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="content-box flex-between">
+                    <div>
+                        <span class="tag-label warning-label">Reguladores Biológicos</span>
+                        <h3>Micronutrientes de Proteção</h3>
+                        <p class="intro-text">Exigidos em doses menores, mas atuam como escudos defensores químicos contra pragas e estresses climáticos severos.</p>
+
+                        <div class="micro-grid">
+                            <div class="micro-card">
+                                <h4>Zinco (Zn)</h4>
+                                <p>Regula a produção de hormônios do crescimento e previne folhas miúdas e atrofiadas.</p>
+                            </div>
+                            <div class="micro-card">
+                                <h4>Boro (B)</h4>
+                                <p>Atua diretamente na formação de frutos perfeitos e evita rachaduras ou vazios internos.</p>
+                            </div>
+                            <div class="micro-card">
+                                <h4>Ferro (Fe)</h4>
+                                <p>Evita a clorose, mantendo a fotossíntese ativa mesmo em solos mais argilosos compactados.</p>
+                            </div>
+                            <div class="micro-card">
+                                <h4>Cálcio (Ca)</h4>
+                                <p>Fortalece a casca dos frutos e impede a podridão estilar (fundo preto no tomate).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span><strong>Regra de Ouro:</strong> Aplicar apenas adubação N-P-K sem fazer a correção prévia da acidez da terra com calcário anula o efeito de absorção dos nutrientes pelas raízes.</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-text">
+                <p>Plataforma Agrinho 2026</p>
+                <span>Canal de utilidade pública agrícola, responsabilidade técnica e inclusão social no campo.</span>
+            </div>
+            <div class="footer-tags">
+                <span>
+                    <p>Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
+                </span>
+                <span><p>Bases de Dados JSON</p></span>
+            </div>
+        </div>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="js/acessibilidade.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
