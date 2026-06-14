@@ -1,279 +1,932 @@
-tailwind.config = {
-    darkMode: 'class',
-    theme: {
-        extend: {
-            colors: {
-                agro: {
-                    light: '#22c55e',
-                    DEFAULT: '#114232',
-                    dark: '#0a241b',
-                    accent: '#87A922'
-                }
-            },
-            fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                title: ['Plus Jakarta Sans', 'sans-serif']
-            }
-        }
-    }
-};
-
-// Objeto que simula a leitura completa de 'bd/agricultura.json' (Conceito + Brasil Escola)
-const agriculturaData = {
-    definicao_base: {
-        titulo: "O que é a Agricultura?",
-        conceito: "É uma atividade humana e económica integrada no setor primário, focada no cultivo da terra para a produção de alimentos e o fornecimento de matérias-primas essenciais para o setor industrial.",
-        importancia_nacional: "No Brasil, atua como um dos principais motores económicos, destacando-se na exportação global de commodities fundamentais como a soja, o milho, o café, a cana-de-açúcar e o algodão."
-    },
-    pilares: {
-        seguranca_alimentar: {
-            titulo: "Alimentação e Subsistência Global",
-            icon: "fa-plate-wheat",
-            importancia: "A agricultura produz mais de 80% de todos os alimentos consumidos no planeta, garantindo a nutrição diária de bilhões de pessoas.",
-            impacto_positivo: "Alimenta a população global, gera milhões de empregos diretos no campo e impulsiona complexas cadeias logísticas corporativas.",
-            potencial_futuro: "O desafio é aumentar a produtividade vertical através da tecnologia para erradicar a fome mundial sem desmatar novas áreas."
-        },
-        desenvolvimento_economico: {
-            titulo: "Motor da Economia e Emprego",
-            icon: "fa-chart-line",
-            importancia: "Representa a maior fatia do PIB para muitas nações em desenvolvimento e é o principal gerador de divisas por meio da exportação.",
-            impacto_positivo: "Fixa o homem no campo com dignidade e fornece matéria-prima bruta para indústrias de vestuário, combustíveis e remédios.",
-            potencial_futuro: "A digitalização do campo (Agrotech) está abrindo vagas qualificadas para operadores de drones e analistas de dados de solo."
-        },
-        sustentabilidade_ambiental: {
-            titulo: "Equilíbrio Climático e Conservação",
-            icon: "fa-earth-americas",
-            importancia: "A terra cultivada de forma correta funciona como um gigantesco ecossistema vivo capaz de reter água e proteger nascentes.",
-            impacto_positivo: "Práticas como o Plantio Direto e a Integração Lavoura-Pecuária-Floresta (ILPF) recuperam solos degradados com eficácia.",
-            potencial_futuro: "A agricultura pode liderar a mitigação climática ao adotar bioinsumos naturais que reduzem a pegada de carbono a zero."
-        }
-    },
-    tipos_de_agricultura: {
-        tradicional: "Praticada com técnicas rudimentares, instrumentos manuais e baixa dependência tecnológica.",
-        moderna: "Caracterizada pelo uso intensivo de biotecnologia, maquinaria pesada, automação e monitorização por satélite.",
-        familiar: "Gerida por membros da mesma família, voltada para a subsistência e crucial no abastecimento alimentar interno.",
-        patronal: "Focada na produção em larga escala com mão de obra assalariada, direcionada maioritariamente para a exportação.",
-        organica: "Manejo sustentável que rejeita o uso de pesticidas ou fertilizantes sintéticos, priorizando a saúde do solo."
-    },
-    sistemas_agricolas: {
-        extensivo: "Modelo com baixo investimento de capital por hectare, baixa aplicação tecnológica e alta dependência das condições climáticas naturais.",
-        intensivo: "Modelo de alta produtividade suportado por forte mecanização, sistemas de irrigação avançados, seleção de sementes e controlo rigoroso de pragas."
-    },
-    alerta_ambiental: {
-        titulo: "Gestão e Alerta Ambiental",
-        descricao: "O manejo inadequado e a falta de responsabilidade técnica podem causar desmatamento, esgotamento rápido dos nutrientes do solo e poluição das reservas hídricas através do uso abusivo de agroquímicos."
-    }
-};
-
-const praticasData = {
-    hortalicas: {
-        titulo: "Hortaliças e Verduras",
-        sub: "Cultura rápida e de alto monitoramento",
-        icon: "fa-seedling",
-        preparo: "O solo deve ser trabalhado em canteiros elevados (20 a 30 cm) para evitar encharcamento das raízes. Exige a incorporação profunda de composto orgânico curtido ou húmus de minhoca.",
-        dica: "Realize plantios em lotes rotativos a cada 14 dias para garantir uma colheita e abastecimento comercial ininterruptos ao longo do ano.",
-        espacamento: "15 a 30 cm entre plantas, variando conforme a variedade (folhas abertas ou cabeças compactas como alface)."
-    },
-    milho: {
-        titulo: "Cultura do Milho",
-        sub: "Produção de grãos e silagem energética",
-        icon: "fa-wheat-awn",
-        preparo: "Altamente beneficiado pelo Plantio Direto sobre palhada residual anterior. Requer alta disponibilidade de nitrogênio nas primeiras 4 semanas de desenvolvimento foliar.",
-        dica: "A polinização ocorre pelo vento. Certifique-se de plantar em blocos quadrados (mínimo de 4 linhas paralelas) e nunca em uma única linha longa isolada.",
-        espacamento: "20 cm de distância entre sementes na linha, com espaçamento entre fileiras de 70 a 90 cm."
-    },
-    soja: {
-        titulo: "Cultivo de Soja",
-        sub: "Grande cultura e fixação de biomassa",
-        icon: "fa-leaf",
-        preparo: "Exige correção cirúrgica da acidez do solo via calagem (pH ideal estabilizado entre 6.0 e 6.5). Realizar inoculação com bactérias fixadoras (Bradyrhizobium) antes de semear.",
-        dica: "Mantenha a profundidade do depósito de sementes estritamente entre 3 e 5 cm para atingir uma germinação e emergência uniforme no talhão.",
-        espacamento: "Distribuição regulada para atingir a média de 10 a 14 plantas por metro linear de sulco."
-    }
-};
-
-function initPortal() {
-    // 1. Renderizar Painel Conceitual Base
-    const conceitoDiv = document.getElementById('agro-conceito-container');
-    if (conceitoDiv) {
-        conceitoDiv.innerHTML = `
-            <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-8 rounded-3xl space-y-4">
-                <h3 class="font-title font-bold text-xl text-agro dark:text-agro-light flex items-center gap-2">
-                    <i class="fa-solid fa-book"></i> ${agriculturaData.definicao_base.titulo}
-                </h3>
-                <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">${agriculturaData.definicao_base.conceito}</p>
-                <div class="p-4 bg-slate-50 dark:bg-agro-dark/50 border-l-4 border-agro rounded-r-xl text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-                    <strong>Cenário Nacional:</strong> ${agriculturaData.definicao_base.importancia_nacional}
-                </div>
-            </div>
-        `;
-    }
-
-    // 2. Renderizar os 3 Pilares Mundiais
-    const pilaresDiv = document.getElementById('agricultura-cards');
-    if (pilaresDiv) {
-        pilaresDiv.innerHTML = '';
-        Object.keys(agriculturaData.pilares).forEach(key => {
-            const item = agriculturaData.pilares[key];
-            pilaresDiv.innerHTML += `
-                <div class="bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 p-6 rounded-3xl transition-all card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-agro/10 text-agro dark:text-agro-light flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid ${item.icon}"></i>
-                        </div>
-                        <h3 class="font-title font-bold text-base mb-3 text-slate-800 dark:text-slate-200">${item.titulo}</h3>
-                        <div class="space-y-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-                            <p><strong>Para que serve:</strong> ${item.importancia}</p>
-                            <p><strong>Impacto Real:</strong> ${item.impacto_positivo}</p>
-                        </div>
-                    </div>
-                    <p class="text-agro dark:text-agro-light text-xs font-semibold mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/50">
-                        <strong>Futuro:</strong> ${item.potencial_futuro}
-                    </p>
-                </div>
-            `;
-        });
-    }
-
-    // 3. Renderizar Tipos de Agricultura
-    const tiposDiv = document.getElementById('agro-tipos-container');
-    if (tiposDiv) {
-        let listaTipos = '';
-        Object.keys(agriculturaData.tipos_de_agricultura).forEach(tipo => {
-            listaTipos += `
-                <div class="p-3 bg-slate-50 dark:bg-agro-dark/40 rounded-xl border border-slate-100 dark:border-slate-800 flex flex-col gap-0.5">
-                    <h5 class="text-xs font-bold text-agro dark:text-agro-light capitalize">${tipo}</h5>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-normal">${agriculturaData.tipos_de_agricultura[tipo]}</p>
-                </div>
-            `;
-        });
-        tiposDiv.innerHTML = `
-            <h4 class="font-title font-bold text-lg mb-4 text-slate-800 dark:text-slate-200 flex items-center gap-2"><i class="fa-solid fa-gears"></i> Modelos e Tipos Classificados</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${listaTipos}</div>
-        `;
-    }
-
-    // 4. Renderizar Sistemas Agrícolas e Alerta Ambiental
-    const sistemasDiv = document.getElementById('agro-sistemas-container');
-    if (sistemasDiv) {
-        sistemasDiv.innerHTML = `
-            <div>
-                <h4 class="font-title font-bold text-lg mb-4 text-slate-800 dark:text-slate-200 flex items-center gap-2"><i class="fa-solid fa-diagram-project"></i> Sistemas de Intensidade</h4>
-                <div class="space-y-3 text-xs">
-                    <p class="leading-relaxed"><strong>Sistema Extensivo:</strong> ${agriculturaData.sistemas_agricolas.extensivo}</p>
-                    <p class="leading-relaxed"><strong>Sistema Intensivo:</strong> ${agriculturaData.sistemas_agricolas.intensivo}</p>
-                </div>
-            </div>
-            <div class="mt-6 p-4 bg-rose-500/10 text-rose-700 dark:text-rose-400 rounded-2xl border border-rose-500/20 text-xs flex items-center gap-3">
-                <i class="fa-solid fa-triangle-exclamation text-xl shrink-0"></i>
-                <span><strong>${agriculturaData.alerta_ambiental.titulo}:</strong> ${agriculturaData.alerta_ambiental.descricao}</span>
-            </div>
-        `;
-    }
-
-    // 5. Inicializar o Seletor Técnico de Culturas
-    const selector = document.getElementById('plantio-selector');
-    if (!selector) return;
-    selector.innerHTML = '';
-    Object.keys(praticasData).forEach((key, idx) => {
-        const item = praticasData[key];
-        const activeClass = idx === 0 ? 'bg-agro text-white dark:bg-agro-light dark:text-agro-dark' : 'bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 text-slate-700 dark:text-slate-300';
-        selector.innerHTML += `
-            <button onclick="renderPlantioDetails('${key}')" id="btn-plantio-${key}" class="plantio-btn flex items-center gap-3 p-4 rounded-2xl font-bold text-sm text-left transition-all shrink-0 lg:w-full ${activeClass} card-hover">
-                <i class="fa-solid ${item.icon} text-lg"></i>
-                <span>${item.titulo}</span>
-            </button>
-        `;
-    });
-    renderPlantioDetails(Object.keys(praticasData)[0]);
+:root {
+    --agro: #023215;
+    --agro-dark: #01180b;
+    --agro-light: #22c55e;
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --blue: #2563eb;
+    --cyan: #06b6d4;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+    --shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    --radius-lg: 1.5rem;
+    --radius-xl: 1.75rem;
+    --font-main: 'Inter', Arial, sans-serif;
+    --font-title: 'Plus Jakarta Sans', Arial, sans-serif;
 }
 
-function renderPlantioDetails(key) {
-    const item = praticasData[key];
-    const detailsDiv = document.getElementById('plantio-details');
-    if (!detailsDiv) return;
-    
-    document.querySelectorAll('.plantio-btn').forEach(btn => {
-        btn.className = "plantio-btn flex items-center gap-3 p-4 rounded-2xl font-bold text-sm text-left transition-all shrink-0 lg:w-full bg-white dark:bg-agro-dark border border-slate-200 dark:border-agro/20 text-slate-700 dark:text-slate-300 card-hover";
-    });
-    const activeBtn = document.getElementById(`btn-plantio-${key}`);
-    if (activeBtn) {
-        activeBtn.className = "plantio-btn flex items-center gap-3 p-4 rounded-2xl font-bold text-sm text-left transition-all shrink-0 lg:w-full bg-agro text-white dark:bg-agro-light dark:text-agro-dark card-hover";
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.floating-tools {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.floating-button {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: #fff;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.floating-button:hover {
+    transform: translateY(-3px);
+}
+
+.floating-button i {
+    font-size: 1.25rem;
+}
+
+.theme-button {
+    background: var(--agro);
+}
+
+.theme-button:hover {
+    background: var(--agro-dark);
+}
+
+.speech-button {
+    background: var(--amber);
+    animation: pulse 1.4s infinite;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+}
+
+.header-inner,
+.page-content,
+.footer-inner {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.brand-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand-icon {
+    padding: 0.65rem;
+    border-radius: 0.9rem;
+    background: rgba(22, 101, 52, 0.1);
+    color: var(--agro-light);
+}
+
+.brand-icon i {
+    font-size: 1.85rem;
+}
+
+.brand-area h1 {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--agro);
+    letter-spacing: -0.03em;
+}
+
+.brand-area p {
+    margin: 0.15rem 0 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.main-nav a {
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.8rem;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover {
+    background: #f1f5f9;
+    color: var(--agro);
+}
+
+.accessibility-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.55rem 1.5rem;
+    background: var(--agro);
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.accessibility-bar span {
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 800;
+}
+
+.accessibility-bar p {
+    margin: 0;
+}
+
+.page-content {
+    flex: 1;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.hero-section {
+    padding-top: 1rem;
+}
+
+.hero-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--agro), var(--agro-dark));
+    color: #fff;
+    box-shadow: var(--shadow);
+}
+
+.hero-text {
+    max-width: 42rem;
+}
+
+.tag-label {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.38rem 0.9rem;
+    border-radius: 999px;
+    background: var(--agro-light);
+    color: var(--agro-dark);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.hero-card h2 {
+    margin: 0 0 1rem;
+    font-family: var(--font-title);
+    font-size: clamp(2.3rem, 5vw, 3.3rem);
+    line-height: 1.05;
+    font-weight: 800;
+}
+
+.hero-card p {
+    margin: 0 0 1.5rem;
+    color: #e2e8f0;
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.85rem;
+    background: #fff;
+    color: var(--agro);
+    font-weight: 800;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-3px);
+    background: #f8fafc;
+}
+
+.hero-feature {
+    width: 100%;
+    max-width: 20rem;
+    display: flex;
+    justify-content: center;
+}
+
+.feature-box {
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.translucent-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+}
+
+.feature-box i {
+    margin-bottom: 1rem;
+    color: var(--agro-light);
+    font-size: 3rem;
+}
+
+.feature-box h4 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+}
+
+.feature-box p {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: 0.78rem;
+}
+
+.content-section {
+    scroll-margin-top: 6rem;
+    margin-top: 5rem;
+}
+
+.section-title {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.section-title-spaced {
+    margin-bottom: 2rem;
+}
+
+.section-title h2 {
+    margin: 0;
+    color: var(--agro);
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.section-title p {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.cards-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.cards-grid-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cards-grid-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.content-box,
+.info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+}
+
+.flex-between,
+.info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.planting-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+}
+
+.planting-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.planting-details {
+    min-height: 18.75rem;
+}
+
+.irrigation-cards {
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    min-height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.icon-box {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    border-radius: 0.85rem;
+    font-size: 1.25rem;
+}
+
+.icon-blue {
+    background: #dbeafe;
+    color: var(--blue);
+}
+
+.icon-cyan {
+    background: #cffafe;
+    color: #0891b2;
+}
+
+.icon-amber {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.info-card h3,
+.content-box h3,
+.comparison-panel h3 {
+    margin: 0 0 0.75rem;
+    color: var(--text);
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.info-card p,
+.intro-text {
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.highlight-green {
+    color: var(--agro-light);
+}
+
+.highlight-cyan {
+    color: var(--cyan);
+}
+
+.highlight-amber {
+    color: var(--amber);
+}
+
+.highlight-rose {
+    color: var(--rose);
+}
+
+.comparison-panel {
+    margin-top: 0;
+}
+
+.progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.progress-track {
+    width: 100%;
+    height: 0.75rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #f1f5f9;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.progress-green {
+    background: var(--agro-light);
+}
+
+.progress-cyan {
+    background: var(--cyan);
+}
+
+.progress-amber {
+    background: var(--amber);
+}
+
+.progress-rose {
+    background: var(--rose);
+}
+
+.progress-width-95 {
+    width: 95%;
+}
+
+.progress-width-85 {
+    width: 85%;
+}
+
+.progress-width-75 {
+    width: 75%;
+}
+
+.progress-width-50 {
+    width: 50%;
+}
+
+.soft-label {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--agro-light);
+}
+
+.warning-label {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.nutrient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nutrient-item,
+.micro-card {
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    border-radius: 1rem;
+}
+
+.nutrient-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.nutrient-letter {
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: var(--agro);
+    color: #fff;
+    font-weight: 800;
+}
+
+.nutrient-item h4,
+.micro-card h4 {
+    margin: 0 0 0.25rem;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.nutrient-item p,
+.micro-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.micro-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.micro-card {
+    padding: 1rem;
+}
+
+.micro-card h4 {
+    color: var(--agro-light);
+}
+
+.warning-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    background: rgba(245, 158, 11, 0.1);
+    color: #b45309;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.warning-box i {
+    flex: 0 0 auto;
+    font-size: 1.3rem;
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 2.5rem 0;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.footer-text p {
+    margin: 0 0 0.25rem;
+    color: var(--agro);
+    font-family: var(--font-title);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.footer-text span {
+    font-size: 0.8rem;
+}
+
+.footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-tags span {
+    padding: 0.45rem 0.9rem;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(22, 101, 52, 0.1);
+    background: rgba(22, 101, 52, 0.05);
+    color: var(--agro);
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+html.dark body,
+body.dark-mode {
+    background: #020617;
+    color: #e2e8f0;
+}
+
+html.dark .site-header,
+body.dark-mode .site-header,
+html.dark .site-footer,
+body.dark-mode .site-footer,
+html.dark .content-box,
+body.dark-mode .content-box,
+html.dark .info-card,
+body.dark-mode .info-card {
+    background: var(--agro-dark);
+    border-color: rgba(34, 197, 94, 0.2);
+}
+
+html.dark .accessibility-bar,
+body.dark-mode .accessibility-bar,
+html.dark .hero-card,
+body.dark-mode .hero-card {
+    background: linear-gradient(135deg, var(--agro-dark), #000000);
+}
+
+html.dark .brand-area h1,
+body.dark-mode .brand-area h1,
+html.dark .section-title h2,
+body.dark-mode .section-title h2,
+html.dark .footer-text p,
+body.dark-mode .footer-text p {
+    color: var(--agro-light);
+}
+
+html.dark .brand-area p,
+body.dark-mode .brand-area p,
+html.dark .section-title p,
+body.dark-mode .section-title p,
+html.dark .info-card p,
+body.dark-mode .info-card p,
+html.dark .intro-text,
+body.dark-mode .intro-text,
+html.dark .nutrient-item p,
+body.dark-mode .nutrient-item p,
+html.dark .micro-card p,
+body.dark-mode .micro-card p {
+    color: #94a3b8;
+}
+
+html.dark .main-nav a,
+body.dark-mode .main-nav a {
+    color: #cbd5e1;
+}
+
+html.dark .main-nav a:hover,
+body.dark-mode .main-nav a:hover {
+    background: rgba(34, 197, 94, 0.15);
+    color: #fff;
+}
+
+html.dark .info-card h3,
+body.dark-mode .info-card h3,
+html.dark .content-box h3,
+body.dark-mode .content-box h3,
+html.dark .comparison-panel h3,
+body.dark-mode .comparison-panel h3,
+html.dark .nutrient-item h4,
+body.dark-mode .nutrient-item h4 {
+    color: #e2e8f0;
+}
+
+html.dark .nutrient-item,
+body.dark-mode .nutrient-item,
+html.dark .micro-card,
+body.dark-mode .micro-card,
+html.dark .progress-track,
+body.dark-mode .progress-track {
+    background: rgba(2, 6, 23, 0.35);
+    border-color: rgba(34, 197, 94, 0.12);
+}
+
+html.dark .card-meta,
+body.dark-mode .card-meta {
+    border-color: rgba(34, 197, 94, 0.12);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.75;
+    }
+}
+
+@media (max-width: 1024px) {
+    .cards-grid-three,
+    .cards-grid-two,
+    .planting-layout {
+        grid-template-columns: 1fr;
     }
 
-    detailsDiv.innerHTML = `
-        <div class="flex items-center gap-4 mb-6">
-            <div class="p-3 bg-agro/10 text-agro dark:text-agro-light rounded-2xl text-2xl">
-                <i class="fa-solid ${item.icon}"></i>
-            </div>
-            <div>
-                <h3 class="font-title font-extrabold text-2xl text-agro dark:text-slate-150 mb-0.5">${item.titulo}</h3>
-                <p class="text-xs font-bold text-agro-light uppercase tracking-wider">${item.sub}</p>
-            </div>
-        </div>
-        <div class="space-y-6">
-            <div>
-                <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2 text-sm uppercase tracking-wider"><i class="fa-solid fa-screwdriver-wrench"></i> Instruções de Preparo do Solo</h4>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${item.preparo}</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-5 bg-slate-50 dark:bg-agro-dark/40 rounded-2xl border border-slate-150 dark:border-agro/15">
-                    <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2 text-xs uppercase tracking-wider"><i class="fa-solid fa-ruler-horizontal"></i> Medidas de Espaçamento</h4>
-                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">${item.espacamento}</p>
-                </div>
-                <div class="p-5 bg-agro/5 dark:bg-agro-light/5 rounded-2xl border border-agro/10 dark:border-agro-light/10">
-                    <h4 class="font-bold text-agro dark:text-agro-light mb-2 flex items-center gap-2 text-xs uppercase tracking-wider"><i class="fa-solid fa-circle-check"></i> Recomendação de Sucesso</h4>
-                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">${item.dica}</p>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// Leitor de tela por duplo clique nativo
-let activeUtterance = null;
-document.body.addEventListener('dblclick', function(e) {
-    window.speechSynthesis.cancel();
-    const targetText = e.target.innerText;
-    if (targetText && targetText.trim() !== "") {
-        const speechIndicator = document.getElementById('speech-indicator');
-        if (speechIndicator) speechIndicator.classList.remove('hidden');
-        
-        activeUtterance = new SpeechSynthesisUtterance(targetText);
-        activeUtterance.lang = 'pt-BR';
-        activeUtterance.rate = 1.1;
-        
-        activeUtterance.onend = function() {
-            if (speechIndicator) speechIndicator.add('hidden');
-        };
-        
-        window.speechSynthesis.speak(activeUtterance);
+    .planting-selector {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
     }
-});
-
-const speechIndicatorBtn = document.getElementById('speech-indicator');
-if (speechIndicatorBtn) {
-    speechIndicatorBtn.addEventListener('click', function() {
-        window.speechSynthesis.cancel();
-        this.classList.add('hidden');
-    });
 }
 
-// Alternador de Modo Escuro (Dark Mode)
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
+@media (max-width: 768px) {
+    .header-inner,
+    .hero-card,
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
 
-if (themeToggleBtn && themeIcon) {
-    themeToggleBtn.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-        if (document.documentElement.classList.contains('dark')) {
-            themeIcon.className = "fa-solid fa-sun text-xl";
-            themeToggleBtn.className = "p-4 bg-amber-500 text-slate-900 rounded-full shadow-2xl transition-all card-hover flex items-center justify-center w-14 h-14";
-        } else {
-            themeIcon.className = "fa-solid fa-moon text-xl";
-            themeToggleBtn.className = "p-4 bg-agro text-white rounded-full shadow-2xl hover:bg-agro-dark transition-all card-hover flex items-center justify-center w-14 h-14";
-        }
-    });
+    .hero-card {
+        padding: 2rem 1.25rem;
+    }
+
+    .page-content {
+        padding-top: 2rem;
+    }
+
+    .micro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-tags {
+        justify-content: center;
+    }
 }
 
-document.addEventListener('DOMContentLoaded', initPortal);
+@media (max-width: 520px) {
+    .header-inner,
+    .page-content,
+    .footer-inner {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .brand-area {
+        flex-direction: column;
+    }
+
+    .main-nav a {
+        font-size: 0.78rem;
+        padding: 0.45rem 0.55rem;
+    }
+
+    .content-box,
+    .info-card {
+        padding: 1.25rem;
+    }
+
+    .card-meta,
+    .progress-label {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+/* Ajustes do widget VLibras */
+[vw],
+[vw] [vw-access-button],
+[vw] [vw-plugin-wrapper] {
+    z-index: 9999 !important;
+}
+
+.icon-green {
+    background: rgba(34, 197, 94, 0.14);
+    color: var(--agro-light);
+}
+
+.icon-rose {
+    background: rgba(244, 63, 94, 0.14);
+    color: var(--rose);
+}
+
+.error-card {
+    border-color: rgba(244, 63, 94, 0.25);
+}
+
+.concept-box {
+    margin-bottom: 2rem;
+}
+
+.card-meta-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.data-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.data-list-spaced {
+    gap: 1.25rem;
+}
+
+.data-item {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 1rem;
+}
+
+.data-item h4 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-title);
+    color: var(--agro);
+}
+
+.data-item p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.planting-card {
+    width: 100%;
+}
+
+.planting-heading {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.planting-heading h3 {
+    margin: 0.5rem 0 0;
+}
+
+.planting-option.active {
+    background: var(--agro);
+    color: #fff;
+    border-color: var(--agro);
+}
+
+body.dark-mode .data-item {
+    background: rgba(5, 46, 22, 0.45);
+    border-color: rgba(34, 197, 94, 0.18);
+}
+
+body.dark-mode .data-item h4 {
+    color: var(--agro-light);
+}
